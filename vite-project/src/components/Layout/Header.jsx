@@ -1,4 +1,4 @@
-import { Bell, Filter, Menu, Plus, Search, Settings, Sun } from "lucide-react";
+import { Bell, ChevronDown, Filter, Menu, Plus, Search, Settings, Sun } from "lucide-react";
 
 const Header = () => {
   return (
@@ -26,7 +26,7 @@ const Header = () => {
               className="w-full pl-10 pr-4 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200  dark:border-slate-700 rounded-xl text-slate-800 dark:text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             />
             <button className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
-              <Filter/>
+              <Filter />
             </button>
           </div>
         </div>
@@ -34,21 +34,40 @@ const Header = () => {
         <div className="flex items-center space-x-3">
           {/* Quick Action */}
           <button className="hidden lg:flex items-center space-x-2 py-2 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:shadow-lg transition-a">
-            <Plus className="w-4 h-4"/>
+            <Plus className="w-4 h-4" />
             <span className="text-sm font-medium ">New</span>
           </button>
           {/* Toggle */}
           <button className="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-            <Sun calssName="w-5 h-5"/>
+            <Sun calssName="w-5 h-5" />
           </button>
           {/* Notification */}
           <button className="relative p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-            <Bell className="w-5 h-5"/>
-            <span className="absolute -top-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+            <Bell className="w-5 h-5" />
+            <span className="absolute -top-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+              3
+            </span>
           </button>
-          <button>
-            <Settings/>
+          {/* Setting */}
+          <button className="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+            <Settings className="w-5 h-5" />
           </button>
+
+          {/* User Profile */}
+          <div className="flex items-center space-x-3 pl-3 border-l border-slate-200 dark:border-slate-700">
+            <img
+              src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=64&h=64&dpr=2"
+              alt="User"
+              className="w-8 h-8 rounded-full ring-2 ring-blue-500"
+            />
+            <div className="hidden md:block">
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Alex Johson</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">Administrator</p>
+            <div>
+              <ChevronDown className="w-4 h-4 text-slate-400"/>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
