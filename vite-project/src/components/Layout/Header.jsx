@@ -63,10 +63,8 @@ const Header = () => {
             <div className="hidden md:block">
             <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Alex Johson</p>
             <p className="text-sm text-slate-500 dark:text-slate-400">Administrator</p>
-            <div>
+            </div>
               <ChevronDown className="w-4 h-4 text-slate-400"/>
-            </div>
-            </div>
           </div>
         </div>
       </div>
