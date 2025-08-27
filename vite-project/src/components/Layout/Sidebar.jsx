@@ -11,6 +11,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import { useState } from "react";
 
 const menuItems = [
   {
@@ -86,6 +87,18 @@ const menuItems = [
 ];
 
 const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange }) => {
+  const [expandedItems, setExpendedItems] = useState(new Set(["analytics"]));
+
+  const toggleExpanded   = (itemid) => {
+    const newExpanded = new Set(expandedItems)
+
+    if(newExpanded.has(itemid)) {
+      newExpanded.delete(itemid)
+    }else{
+      newExpanded.add(itemid)
+    }
+    setExpendedItems(newExpanded)
+  }
   return (
     <div
       className={`${
@@ -123,7 +136,13 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange }) => {
                   currentPage === item.id || item.active
                     ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25"
                     : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50"
-                }`}
+                }`} onClick={() => {
+                  if(item.submenu) {
+                    toggleExpanded(item.id)
+                  }else{
+                    onPageChange(item.id)
+                  }
+                }}
               >
                 <div className="flex items-center space-x-3">
                   <item.icon className={`w-5 h-5`} />
@@ -150,10 +169,10 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange }) => {
                 )}
               </button>
               {/* sub menus */}
-              {!collapsed && item.submenu && (
+              {!collapsed && item.submenu && expandedItems.has(item.id) &&(
                 <div className="ml-8 mt-2 spacey-y-1">
                   {item.submenu.map((subitem) => {
-                    return <button>{subitem.label}</button>;
+                    return <button className="w-full text-left p-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-lg transition-all">{subitem.label}</button>;
                   })}
                 </div>
               )}
