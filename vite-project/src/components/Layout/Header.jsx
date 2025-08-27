@@ -1,4 +1,13 @@
-import { Bell, ChevronDown, Filter, Menu, Plus, Search, Settings, Sun } from "lucide-react";
+import {
+  Bell,
+  ChevronDown,
+  Filter,
+  Menu,
+  Plus,
+  Search,
+  Settings,
+  Sun,
+} from "lucide-react";
 
 const Header = () => {
   return (
@@ -61,10 +70,14 @@ const Header = () => {
               className="w-8 h-8 rounded-full ring-2 ring-blue-500"
             />
             <div className="hidden md:block">
-            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Alex Johson</p>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Administrator</p>
+              <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                Alex Johson
+              </p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Administrator
+              </p>
             </div>
-              <ChevronDown className="w-4 h-4 text-slate-400"/>
+            <ChevronDown className="w-4 h-4 text-slate-400" />
           </div>
         </div>
       </div>
