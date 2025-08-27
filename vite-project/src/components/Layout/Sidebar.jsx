@@ -1,4 +1,72 @@
-import { Zap } from "lucide-react";
+import { BarChart3, Calendar, CreditCard, FileText, LayoutDashboard, Package, Settings, ShoppingBag, Users, Zap } from "lucide-react";
+
+const menuItems = [
+  {
+    id: "dashdboard", 
+    icon: LayoutDashboard,
+    label: "Dashboard", 
+    active: true,
+    badge: 'New', 
+  },
+  {
+    id: "analytics",
+    icon: BarChart3,
+    label: 'Analytics',
+    submenu: [
+      {id: "overview", label: "Overview"},
+      {id: "reports", laber: "Reports"}, 
+      {id: "insight", label: "Insight"}
+    ], 
+  }, 
+  {
+    id: "users",
+    icon: Users,
+    label: "Users", 
+    count: "2.4k",
+    submenu: [
+      {id: "all-users", label: 'All Users'},
+      {id: "roles", label: "Roles & Permission"},
+      {id: "activity", label: "User Activity"},
+    ],
+  },
+  {
+    id: "ecommerce", 
+    icon: ShoppingBag,
+    label: "E-commerce",
+    submenu: [
+      {id: "products", label: 'Products'},
+      {id: "orders", label: "Orders"}, 
+      {id: "customer", label: "Customers"},
+    ],
+  },
+  {
+    id: "inventory",
+    icon: Package,
+    label: "Inventory", 
+    count: "847",
+  },
+  {
+    id: "transtion",
+    icon: CreditCard,
+    label: 'Transactions'
+  },
+  {
+    id: 'calender',
+    icon: Calendar,
+    label: 'Calendar'
+  },
+  {
+    id: 'reports',
+    icon: FileText,
+    label: 'Reports'
+  },
+  {
+    id: 'settings',
+    icon: Settings,
+    label: 'Settings'
+  }
+
+]
 
 const Sidebar = () => {
   return (
