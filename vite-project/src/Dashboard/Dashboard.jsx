@@ -1,8 +1,11 @@
-import React from 'react'
+import StatsGrid from "./StatsGrid"
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div className="space-y-6">
+        {/* Stats grid */}
+        <StatsGrid/>
+    </div>
   )
 }
 
