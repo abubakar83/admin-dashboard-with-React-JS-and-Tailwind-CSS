@@ -1,7 +1,63 @@
 import { MoreHorizontal } from "lucide-react";
-import React from "react";
+
+const recentOrders = [
+  {
+    id: "#3847",
+    customer: "Johan Smith",
+    product: "Mackbook Pro 16",
+    amount: "$2,399",
+    status: "completed",
+    date: "2024-01-15",
+  },
+  {
+    id: "#3848",
+    customer: "Sarah Johnsaon",
+    product: "Mackbook 15 Pro",
+    amount: "$1,999",
+    status: "pending",
+    date: "2024-01-15",
+  },
+  {
+    id: "#3849",
+    customer: "Mike Wilson",
+    product: "AirPods Pro",
+    amount: "$249",
+    status: "completed",
+    date: "2024-01-14",
+  },
+  {
+    id: "#3850",
+    customer: "Emily Davis",
+    product: "iPad Air",
+    amount: "$599",
+    status: "cancelled",
+    date: "2024-01-14",
+  },
+];
+
+const TopProducts = [
+  {
+    name: "MacBook Pro 16",
+    sales: 1247,
+    revenue: "$2,987,530",
+    trend: "up",
+    change: "+12%",
+  },
+];
 
 const TableSection = () => {
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "completed":
+        return "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400";
+      case "pending":
+        return "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400";
+      case "cancelled":
+        return "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400";
+      default:
+        return "bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-400";
+    }
+  };
   return (
     <div className="space-y-6">
       {/* Recent Orders */}
@@ -71,9 +127,9 @@ const TableSection = () => {
                       Order status
                     </span>
                   </td>
-                   <td className="p-4">
+                  <td className="p-4">
                     <span className="text-sm font-medium text-blue">
-                      <MoreHorizontal className="w-4 h-4"/>
+                      <MoreHorizontal className="w-4 h-4" />
                     </span>
                   </td>
                 </tr>
