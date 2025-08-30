@@ -1,4 +1,4 @@
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, TrendingDown, TrendingUp } from "lucide-react";
 
 const recentOrders = [
   {
@@ -42,6 +42,27 @@ const TopProducts = [
     revenue: "$2,987,530",
     trend: "up",
     change: "+12%",
+  },
+  {
+    name: "iPhone 15 Pro",
+    sales: 2156,
+    revenue: "$2,587,044",
+    trend: "up",
+    change: "+8%",
+  },
+  {
+    name: "AirPods Pro",
+    sales: 3421,
+    revenue: "$852,229",
+    trend: "down",
+    change: "-3%",
+  },
+  {
+    name: "iPaid Air",
+    sales: 987,
+    revenue: "$591,213",
+    trend: "up",
+    change: "+15%",
   },
 ];
 
@@ -98,44 +119,104 @@ const TableSection = () => {
                   Date
                 </th>
               </tr>
-              <tbody>
-                <tr className="border-b border-slate-200/50 dark:border-slate-700/50 hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
-                  <td className="p-4">
-                    <span className="text-sm font-medium text-blue">
-                      Order ID
-                    </span>
-                  </td>
-                  <td className="p-4">
-                    <span className="text-sm text-slate-800 dark:text-white">
-                      Customer
-                    </span>
-                  </td>
-                  <td className="p-4">
-                    <span className="text-sm font-medium text-blue">
-                      Product
-                    </span>
-                  </td>
-                  <td className="p-4">
-                    <span className="text-sm font-medium text-blue">
-                      Amount
-                    </span>
-                  </td>
-                  <td className="p-4">
-                    <span
-                      className={`text-slate-400 dark:text-white font-medium text-xs px-3 py-1 rounded-full`}
-                    >
-                      Order status
-                    </span>
-                  </td>
-                  <td className="p-4">
-                    <span className="text-sm font-medium text-blue">
-                      <MoreHorizontal className="w-4 h-4" />
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
             </thead>
+            <tbody>
+              {recentOrders.map((order, index) => {
+                return (
+                  <tr className="border-b border-slate-200/50 dark:border-slate-700/50 hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                    <td className="p-4" key={index}>
+                      <span className="text-sm font-medium text-blue">
+                        {order.id}
+                      </span>
+                    </td>
+                    <td className="p-4">
+                      <span className="text-sm text-slate-800 dark:text-white">
+                        {order.customer}
+                      </span>
+                    </td>
+                    <td className="p-4">
+                      <span className="text-sm font-medium text-blue">
+                        {order.product}
+                      </span>
+                    </td>
+                    <td className="p-4">
+                      <span className="text-sm font-medium text-blue">
+                        {order.amount}
+                      </span>
+                    </td>
+                    <td className="p-4">
+                      <span
+                        className={`text-slate-400 dark:text-white font-medium text-xs px-3 py-1 rounded-full ${getStatusColor(
+                          order.status
+                        )}`}
+                      >
+                        {order.date}
+                      </span>
+                    </td>
+                    <td className="p-4">
+                      <span className="text-sm font-medium text-blue">
+                        <MoreHorizontal className="w-4 h-4" />
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
+        </div>
+      </div>
+      {/* Top Products */}
+      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden">
+        <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50">
+          <div className="flex items-center justify-between">
+            <div className="text-lg font-bold text-slate-800 dark:text-slate-800">
+              <h3 className="text-lg font-bold text-slate-800 dark:text-white">
+                Top Products
+              </h3>
+            </div>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              best performing products
+            </p>
+          </div>
+          <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+            View All{" "}
+          </button>
+        </div>
+        {/* Dynamic Data */}
+        <div className="p-6 space-y-4">
+          {TopProducts.map((product, index) => {
+            return (
+              <div className="flex items-center justify-between p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-slate-800 dark:text-white">
+                    {product.name}
+                  </h4>
+                  <p>{product.sales}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm font-semibold text-slate-800 dark:text-white">
+                    {product.revenue}
+                  </p>
+                  <div className="flex items-center space-x-1">
+                    {product.trend === "up" ? (
+                      <TrendingUp className="w-3 h-3 text-emerald-500" />
+                    ) : (
+                      <TrendingDown className="w-3 h-3 text-red-500" />
+                    )}
+                    <span
+                      className={`text-sm font-medium ${
+                        product.trend === "up"
+                          ? "text-emerald-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {product.change}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
